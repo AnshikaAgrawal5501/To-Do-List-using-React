@@ -75,6 +75,10 @@ button span {
     border: 2px solid hsl(198, 1%, 29%);
 }
 
+button span:hover {
+    background-color: #ffeaa7;
+}
+
 li {
     text-align: left;
     position: relative;
