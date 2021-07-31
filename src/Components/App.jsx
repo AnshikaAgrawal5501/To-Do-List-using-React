@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ToDo from "./Todo";
+import InputArea from "./InputArea";
+
 
 function App() {
 
@@ -40,12 +42,12 @@ function App() {
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
-      <div className="form">
-        <input type="text" onChange={inputNewItem} value={newItem}/>
-        <button onClick={addNewItem}>
-          <span>Add</span>
-        </button>
-      </div>
+      <InputArea 
+        type="text"
+        inputFunction={inputNewItem}
+        value={newItem}
+        addFunction={addNewItem}
+      />
       <div>
         <ul>
           {
