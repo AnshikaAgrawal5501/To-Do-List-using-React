@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ToDo from "./Todo";
 
 function App() {
 
@@ -18,8 +19,20 @@ function App() {
     addItem("");
   }
 
-  function makeList(item) {
-    return <li>{item}</li>;
+  function makeList(item, index) {
+    return <ToDo key={index} id={index} item={item} delItem={deleteItem}/>;
+  }
+
+  function deleteItem(index) {
+    
+    // items.splice(index,1);
+    // itemsList(items);
+
+    itemsList(prevItems => {
+      return prevItems.filter((item, id) => {
+        return id !== index;
+      });
+    });
   }
 
   return (
