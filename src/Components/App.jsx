@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ToDo from "./Todo";
 import InputArea from "./InputArea";
 
@@ -8,6 +8,18 @@ function App() {
   const [newItem, addItem] = useState("");
   const [items, itemsList]=useState([]);
 
+  useEffect(() => {
+    const item=JSON.parse(localStorage.getItem('items'));
+
+    if (item) {
+      itemsList(item);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(items));
+  }, [items]);
+
   function inputNewItem(event) {
     const item=event.target.value;
     addItem(item);
@@ -15,8 +27,7 @@ function App() {
 
   function addNewItem() {
 
-    items.push(newItem);
-    itemsList(items);
+    itemsList([...items,newItem]);
 
     addItem("");
   }
